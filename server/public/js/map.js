@@ -19,7 +19,7 @@ svg.append("rect")
 
 var g = svg.append("g");
 
-d3.json("data/ch.json", function(error, ch) {
+d3.json("data/ch-cantons-lakes.json", function(error, ch) {
   g.append("g")
     .attr("id", "cantons")
     .selectAll("path")
@@ -55,7 +55,7 @@ function clicked(d) {
 
     if (!centered)
     {
-      d3.json("data/ch.json", function(error, ch) {
+      d3.json("data/ch-districts-lakes.json", function(error, ch) {
         g.append("path")
           .datum(topojson.mesh(ch, ch.objects.districts, function (a, b) {
             return a !== b;
@@ -68,12 +68,11 @@ function clicked(d) {
     }
 
     $.ajax({
-      url: 'http://localhost:3000/cantons/' + d.properties.name + '/users',
+      url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
       type: 'GET',
       crossDomain: true,
       success: function(data) {
           $('#personTable').html(data);
-        console.log(data);
       }
     });
 
