@@ -46,6 +46,7 @@ d3.json("data/ch.json", function(error, ch) {
 function clicked(d) {
   var x, y, k;
 
+  console.log(d);
   if (d && centered !== d) {
     var centroid = path.centroid(d);
     x = centroid[0];
