@@ -7,7 +7,7 @@ class CantonsController < ApplicationController
   def users_in_canton
     @canton = Canton.find_by_name(params[:name])
     if !@canton.nil?
-      @users = User.where(canton: @canton)
+      @users = User.where(canton: @canton).includes(:political_party)
       render json: @users
     else
       render json: { status: 422 }
