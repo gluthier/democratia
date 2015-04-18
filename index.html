@@ -11,6 +11,9 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron-narrow.css" rel="stylesheet">
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -27,8 +30,29 @@
 
 
 <body>
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills pull-right">
+                <li role="presentation" class="active"><a href="#">Français</a></li>
+                <li role="presentation"><a href="#">Deutch</a></li>
+                <li role="presentation"><a href="#">Italiano</a></li>
+            </ul>
+        </nav>
+        <h3 class="text-muted">Democratia</h3>
+    </div>
+
+	<div id="info">
+        <div id="selected">
+
+        </div>
+
+        <div id="person">
+            <div id="full_name">Adrian Amstutz [<a href="http://www.parlament.ch/d/suche/Seiten/biografie.aspx?biografie_id=1135" target="_blank">bio</a>]</div>
+            <div id="email"><a href="mailto:adrian.amstutz@parl.ch">adrian.amstutz@parl.ch</a></div>
+            <div id="phone">+41 27 924 11 33</div>
+        </div>
+    </div>
 	<div id="map"></div>
-	<div id="info"></div>
 </body>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>

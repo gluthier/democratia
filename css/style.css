@@ -17,9 +17,19 @@ info {
   stroke: #fff;
   stroke-width: 1;
 }
- 
+
 .municipality-boundaries {
   fill: none;
   stroke: #fff;
   stroke-width: .3;
+}
+
+body {
+	width: 50em;
+	margin: 0 auto;
+	color: #333;
+}
+
+#full_name {
+	font-weight: bold;
 }
