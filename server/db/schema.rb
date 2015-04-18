@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418133406) do
+ActiveRecord::Schema.define(version: 20150418140644) do
+
+  create_table "cantons", force: :cascade do |t|
+    t.string   "name"
+    t.string   "shortname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "communes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "shortname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "districts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "shortname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "political_parties", force: :cascade do |t|
     t.string   "name"
@@ -28,6 +49,9 @@ ActiveRecord::Schema.define(version: 20150418133406) do
     t.integer  "political_party_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "canton_id"
+    t.integer  "district_id"
+    t.integer  "commune_id"
   end
 
 end

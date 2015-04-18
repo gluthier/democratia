@@ -5,5 +5,8 @@ class CreateCantons < ActiveRecord::Migration
       t.string :shortname
       t.timestamps null: false
     end
+
+    add_column :users, :canton_id, :integer
+
   end
 end
