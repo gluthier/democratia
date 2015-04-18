@@ -12,6 +12,7 @@ class CantonsController < ApplicationController
       render json: { status: 422 }
       return
     end
+    render layout: false
   end
 
 end

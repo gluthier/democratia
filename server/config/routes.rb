@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'welcome#index'
+  root 'index#index'
 
   get '/cantons' => 'cantons#list'
   get '/districts' => 'districts#list'
