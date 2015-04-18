@@ -1,6 +1,11 @@
-var width = 960,
-    height = 500;
- 
+
+
+var w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    width = w.innerWidth || e.clientWidth || g.clientWidth,
+    height = w.innerHeight|| e.clientHeight|| g.clientHeight;
 
 
 var path = d3.geo.path()
