@@ -71,14 +71,8 @@ function clicked(d) {
       type: 'GET',
       crossDomain: true,
       success: function(data) {
+          $('#personTable').html(data);
         console.log(data);
-        console.log(data.email);
-        $('#cantonInfos').html()
-        $.each(data, function(key, val) {
-            console.log(key+" "+val);
-        })
-        $('#test').html(data.email);
-
       }
     });
 
@@ -92,7 +86,7 @@ function clicked(d) {
     centered = null;
     cantonLevel = false;
     g.select("#districts").remove();
-
+    $('#personTable').html("<p id=\"ux_info\">Cliquez sur un canton pour afficher ces conseillers-ères.</p>");
   }
 
 
