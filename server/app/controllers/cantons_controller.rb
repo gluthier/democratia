@@ -1,6 +1,6 @@
 class CantonsController < ApplicationController
 
-  def users_in_cantons
+  def users_in_canton
     @canton = Canton.find_by_name(params[:name])
     if !@canton.nil?
       @users = User.find_by_canton_id(@canton.id)
