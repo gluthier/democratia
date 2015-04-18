@@ -11,16 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418144232) do
+ActiveRecord::Schema.define(version: 20150418165257) do
 
   create_table "cantons", force: :cascade do |t|
-    t.string   "name"
-    t.string   "shortname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "communes", force: :cascade do |t|
     t.string   "name"
     t.string   "shortname"
     t.datetime "created_at", null: false
@@ -32,6 +25,15 @@ ActiveRecord::Schema.define(version: 20150418144232) do
     t.string   "shortname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "canton_id"
+  end
+
+  create_table "municipalities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "shortname"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "districts_id"
   end
 
   create_table "political_parties", force: :cascade do |t|
