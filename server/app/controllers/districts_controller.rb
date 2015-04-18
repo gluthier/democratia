@@ -1,5 +1,9 @@
 class DistrictsController < ApplicationController
 
+  def list
+    render json: District.all
+  end
+
   def users_in_district
     @district = District.find_by_name(params[:name])
     if !@district.nil?

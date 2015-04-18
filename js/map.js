@@ -50,22 +50,24 @@ function clicked(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 4;
+    k = 4;i
+
+    if (!centered)
+    {
+      d3.json("data/ch.json", function(error, ch) {
+        g.append("path")
+          .datum(topojson.mesh(ch, ch.objects.districts, function (a, b) {
+            return a !== b;
+          }))
+          .attr("class", "municipality-boundaries")
+          .attr("id", "districts")
+          .attr("d", path);
+
+      });
+    }
+    
     centered = d;
     cantonLevel = true;
-
-    d3.json("data/ch.json", function(error, ch) {
-
-
-
-      g.append("path")
-        .datum(topojson.mesh(ch, ch.objects.districts, function(a, b) { return a !== b; }))
-      .attr("class", "municipality-boundaries")
-    .attr("id","districts")
-      .attr("d", path);
-
-  });
-
 
   } else {
     x = width / 2;
@@ -74,6 +76,7 @@ function clicked(d) {
     centered = null;
     cantonLevel = false;
     g.select("#districts").remove();
+    
   }
 
 
