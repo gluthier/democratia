@@ -1,5 +1,3 @@
-
-
 var w = window,
     d = document,
     e = d.documentElement,
@@ -33,4 +31,4 @@ d3.json("data/ch.json", function(error, ch) {
     .datum(topojson.mesh(ch, ch.objects.cantons, function(a, b) { return a !== b; }))
     .attr("class", "canton-boundaries")
     .attr("d", path);
-});
+}); 
