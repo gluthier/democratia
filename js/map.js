@@ -50,7 +50,7 @@ function clicked(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 4;i
+    k = 4;
 
     if (!centered)
     {
@@ -66,6 +66,15 @@ function clicked(d) {
       });
     }
     
+    $.ajax({
+      url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
+      type: 'GET',
+      crossDomain: true,
+      success: function(data) {
+        console.log(data);
+      }
+    });
+
     centered = d;
     cantonLevel = true;
 
