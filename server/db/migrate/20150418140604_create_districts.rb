@@ -5,5 +5,8 @@ class CreateDistricts < ActiveRecord::Migration
       t.string :shortname
       t.timestamps null: false
     end
+
+    add_column :users, :district_id, :integer
+
   end
 end
