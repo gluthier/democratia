@@ -1,0 +1,3 @@
+class DistrictsController < ApplicationController
+
+end

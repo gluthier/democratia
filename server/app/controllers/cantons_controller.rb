@@ -1,0 +1,3 @@
+class CantonsController < ApplicationController
+
+end
