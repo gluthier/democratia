@@ -5,6 +5,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :lastname
       t.string :email
       t.belongs_to :political_party
+      t.string :canton
+      t.string :district
+      t.string :city
       t.timestamps null: false
     end
   end
