@@ -50,7 +50,7 @@ function clicked(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 4;
+    k = 4;i
 
     if (!centered)
     {
