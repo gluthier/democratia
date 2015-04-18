@@ -65,13 +65,20 @@ function clicked(d) {
 
       });
     }
-    
+
     $.ajax({
-      url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
+      url: 'http://localhost:3000/cantons/' + d.properties.name + '/users',
       type: 'GET',
       crossDomain: true,
       success: function(data) {
         console.log(data);
+        console.log(data.email);
+        $('#cantonInfos').html()
+        $.each(data, function(key, val) {
+            console.log(key+" "+val);
+        })
+        $('#test').html(data.email);
+
       }
     });
 
@@ -85,7 +92,7 @@ function clicked(d) {
     centered = null;
     cantonLevel = false;
     g.select("#districts").remove();
-    
+
   }
 
 
