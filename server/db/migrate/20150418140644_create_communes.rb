@@ -5,5 +5,8 @@ class CreateCommunes < ActiveRecord::Migration
       t.string :shortname
       t.timestamps null: false
     end
+
+    add_column :users, :commune_id, :integer
+
   end
 end
