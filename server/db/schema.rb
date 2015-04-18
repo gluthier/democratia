@@ -11,29 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418165257) do
+ActiveRecord::Schema.define(version: 20150418182621) do
 
   create_table "cantons", force: :cascade do |t|
     t.string   "name"
     t.string   "shortname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "json_id_canton"
   end
 
   create_table "districts", force: :cascade do |t|
     t.string   "name"
     t.string   "shortname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "canton_id"
+    t.integer  "json_id_district"
   end
 
   create_table "municipalities", force: :cascade do |t|
     t.string   "name"
     t.string   "shortname"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "districts_id"
+    t.integer  "json_id_municipality"
+    t.integer  "canton_id"
   end
 
   create_table "political_parties", force: :cascade do |t|
