@@ -25,6 +25,7 @@ def generate_users
     file.readlines.each do |line|
       begin
         connection.execute(line)
+        puts 'Inserting user into database'
       rescue
         puts 'An error occurred when inserting user data'
       end

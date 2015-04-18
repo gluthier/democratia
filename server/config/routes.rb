@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/districts/:name/users' => 'districts#users_in_district'
   get '/municipalities/:name/users' => 'municipalities#users_in_municipality'
 
+  get '/party/:name/users' => 'political_parties#political_party_users'
+
 end
