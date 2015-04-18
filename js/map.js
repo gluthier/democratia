@@ -2,6 +2,7 @@ var width = 960,
     height = 500,
     centered;
 
+var cantonLevel = false;
 
 var path = d3.geo.path()
     .projection(null);
@@ -20,17 +21,26 @@ var g = svg.append("g");
 
 d3.json("data/ch.json", function(error, ch) {
   g.append("g")
-      .attr("id", "states")
+    .attr("id", "cantons")
     .selectAll("path")
-      .data(topojson.feature(ch, ch.objects.cantons).features)
+    .data(topojson.feature(ch, ch.objects.cantons).features)
     .enter().append("path")
-      .attr("d", path)
-      .on("click", clicked);
+    .attr("d", path)
+    .on("click", clicked);
+
 
   g.append("path")
       .datum(topojson.mesh(ch, ch.objects.cantons, function(a, b) { return a !== b; }))
-      .attr("id", "state-borders")
+      .attr("id", "cantons-borders")
       .attr("d", path);
+
+
+  g.append("g")
+    .attr("class", "lakes")
+    .selectAll("path")
+    .data(topojson.feature(ch, ch.objects.lakes).features)
+    .enter().append("path")
+    .attr("d", path);
 });
 
 function clicked(d) {
@@ -42,12 +52,31 @@ function clicked(d) {
     y = centroid[1];
     k = 4;
     centered = d;
+    cantonLevel = true;
+
+    d3.json("data/ch.json", function(error, ch) {
+
+
+
+      g.append("path")
+        .datum(topojson.mesh(ch, ch.objects.districts, function(a, b) { return a !== b; }))
+      .attr("class", "municipality-boundaries")
+    .attr("id","districts")
+      .attr("d", path);
+
+  });
+
+
   } else {
     x = width / 2;
     y = height / 2;
     k = 1;
     centered = null;
+    cantonLevel = false;
+    g.select("#districts").remove();
   }
+
+
 
   g.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
@@ -56,4 +85,5 @@ function clicked(d) {
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", 1.5 / k + "px");
+
 }

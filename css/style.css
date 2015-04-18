@@ -1,6 +1,7 @@
 .country {
-  fill :#222;
+  fill :#f25;
 }
+
 
 .canton-boundaries {
   fill: none;
@@ -10,6 +11,7 @@
  
 .municipality-boundaries {
   fill: none;
+
   stroke: #fff;
   stroke-width: .3;
 }
@@ -19,18 +21,33 @@
   pointer-events: all;
 }
 
-#states {
-  fill: #aaa;
+
+#cantons {
+  fill: #222;
 }
 
-#states .active {
+
+.lakes {
+  fill: steelblue;
+  fill-opacity: 1;
+}
+
+#municipalities {
+  fill: #222;
+}
+
+#municipalities .active {
+  fill: red;
+}
+
+#cantons .active {
   fill: orange;
 }
 
-#state-borders {
+#cantons-borders {
   fill: none;
   stroke: #fff;
-  stroke-width: 1.5px;
+  stroke-width: 1px;
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none;
