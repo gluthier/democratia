@@ -32,17 +32,18 @@ d3.json("data/ch-cantons-lakes.json", function(error, ch){
         .attr("d", path)
         .on("click", clicked);
 
+
+    g.append("path")
+        .datum(lakes)
+        .attr("class", "lake")
+        .attr("d", path);
+
     g.selectAll("text")
         .data(cantons.features)
         .enter().append("text")
         .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
         .attr("dy", ".35em")
         .text(function(d) { return d.properties.name; });
-    
-    g.append("path")
-        .datum(lakes)
-        .attr("class", "lake")
-        .attr("d", path);
 
 });
 
