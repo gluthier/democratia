@@ -16,7 +16,7 @@ svg.append("rect")
     .attr("width", width)
     .attr("height", height);
 
-var g = svg; //svg.append("g");
+var g = svg.append("g");
 
 d3.json("data/ch-cantons-lakes.json", function(error, ch){
 
@@ -24,7 +24,7 @@ d3.json("data/ch-cantons-lakes.json", function(error, ch){
     var cantons = topojson.feature(ch, ch.objects.cantons);
     var lakes = topojson.feature(ch, ch.objects.lakes);
 
-    svg.selectAll(".canton")
+    g.selectAll(".canton")
         .data(cantons.features)
         .enter()
         .append("path")
@@ -32,7 +32,7 @@ d3.json("data/ch-cantons-lakes.json", function(error, ch){
         .attr("d", path)
         .on("click", clicked);
 
-    svg.append("path")
+    g.append("path")
         .datum(lakes)
         .attr("class", "lake")
         .attr("d", path);
@@ -46,16 +46,31 @@ function clicked(d) {
     var centroid = path.centroid(d);
     x = centroid[0];
     y = centroid[1];
-    k = 4;
+
+    if (d.properties.type == "canton") {
+      k = 4;
+    }
+
+    if (d.properties.type == "municipality") {
+      k = 10;
+    }
+
+    if (d.properties.type == "district") {
+      k = 6;
+    }
+
+
+
+    
 
     if (!centered) {
-        //d3.select(this).on("click", null);
+        d3.select(this).on("click", null);
         console.log("First time");
         d3.json("data/ch-districts-lakes.json", function (error, ch) {
             var districts = topojson.feature(ch, ch.objects.districts);
             var lakes = topojson.feature(ch, ch.objects.lakes);
 
-            svg.selectAll(".district")
+            g.selectAll(".district")
                 .data(districts.features)
                 .enter()
                 .append("path")
@@ -63,7 +78,7 @@ function clicked(d) {
                 .attr("d", path)
                 .on("click", clicked);
 
-            svg.append("path")
+            g.append("path")
                 .datum(lakes)
                 .attr("class", "lake")
                 .attr("d", path);
@@ -79,7 +94,7 @@ function clicked(d) {
             var municipalities = topojson.feature(ch, ch.objects.municipalities);
             var lakes = topojson.feature(ch, ch.objects.lakes);
 
-           svg.selectAll(".municipality")
+           g.selectAll(".municipality")
                 .data(municipalities.features)
                 .enter()
                 .append("path")
@@ -87,7 +102,7 @@ function clicked(d) {
                 .attr("d", path)
                 .on("click", clicked);
 
-           svg.append("path")
+           g.append("path")
                 .datum(lakes)
                 .attr("class", "lake")
                 .attr("d", path);
@@ -111,12 +126,14 @@ function clicked(d) {
     cantonLevel = true;
 
   } else {
+    console.log("ELSE");
     x = width / 2;
     y = height / 2;
     k = 1;
     centered = null;
     cantonLevel = false;
-    g.select("#districts").remove();
+    g.selectAll(".district").remove();
+    g.selectAll(".municipality").remove();
     $('#personTable').html("<p id=\"ux_info\">Cliquez sur un canton pour afficher ses conseillers-ères.</p>");
   }
 
@@ -125,7 +142,7 @@ function clicked(d) {
   g.selectAll("path")
       .classed("active", centered && function(d) { return d === centered; });
 
-  svg.transition()
+  g.transition()
       .duration(750)
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
       .style("stroke-width", 1.5 / k + "px");

@@ -2,11 +2,23 @@
   fill :#f25;
 }
 
-.canton, .district {
+.canton {
   fill: #e5e5e5;
   stroke: #fff;
   stroke-width:2px;
 }
+
+.district {
+  fill: #e5e5e5;
+  stroke: #fff;
+  stroke-width:1px;
+}
+.municipality {
+  fill: #e5e5e5;
+  stroke: #fff;
+  stroke-width:.5px;
+}
+
 
 .canton-boundaries {
   fill: none;
@@ -59,7 +71,7 @@ h1 {
   fill: red;
 }
 
-.canton .active {
+.active {
   fill: orange;
 }
 
