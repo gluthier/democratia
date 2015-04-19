@@ -9,8 +9,11 @@ class ApplicationController < ActionController::Base
 
   private
   def current_commenter
-      @current_commenter ||= Commenter.find(session[:commenter_id]) if
-      session[:commenter_id]
+    begin
+      @current_commenter ||= Commenter.find(session[:commenter_id]) if session[:commenter_id]
+    rescue
+      session.delete(:commenter_id)
+    end
   end
   helper_method :current_commenter
 
