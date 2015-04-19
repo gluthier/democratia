@@ -122,6 +122,13 @@ function clicked(d) {
 }
 
 $('body').on('click','.ask',function(data){
-    console.log('test some special magick');
-    console.log(data);
+    var id = $(data.target).attr('data-user-id');
+    $.ajax({
+        url: 'http://localhost:3000/users/' + id,
+        type: 'GET',
+        crossDomain: true,
+        success: function(data) {
+            $('#personTable').html(data);
+        }
+    });
 });

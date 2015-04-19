@@ -1,0 +1,18 @@
+<% if @comments.empty? %>
+    <p>Cette personne n'a recu aucune question, soyez le premier à la contacter!</p>
+<% else %>
+    <% @comments.each do |comment| %>
+        <a href="#" class="upvote" data-comment-id="<%= comment.id %>">Up</a>
+        <a href="#" class="downvote" data-comment-id="<%= comment.id %>">Down</a>
+        <%= comment.title %><%= comment.content %>
+    <% end %>
+<% end %>
+<% if @current_commenter.nil? %>
+    <p>Vous devez vous connecter pour pouvoir intéragir sur le site.</p>
+<% else %>
+    <form>
+      <label>Question: </label><input type="text" name="titre">
+      <label>Description:</label><textarea name="description">Quelques précisions sur votre question</textarea>
+      <input type="submit" value="Envoyer" />
+    </form>
+<% end %>

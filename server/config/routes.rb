@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'index#index'
 
+  get '/users/:id' => 'users#messages'
   get '/cantons' => 'cantons#list'
   get '/districts' => 'districts#list'
   get '/municipalities' => 'municipalities#list'
