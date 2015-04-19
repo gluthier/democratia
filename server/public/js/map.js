@@ -36,7 +36,8 @@ d3.json("data/ch-cantons-lakes.json", function(error, ch){
         .data(cantons.features)
         .enter().append("text")
         .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
-        .attr("dy", ".35em")
+        .attr("dy", ".20em")
+        .attr("class", "textCanton")
         .text(function(d) { return d.properties.name; });
     
     g.append("path")
@@ -83,6 +84,8 @@ function clicked(d) {
                 .on("click", clicked);
 
 
+            
+
             g.append("path")
                 .datum(lakes)
                 .attr("class", "lake")
@@ -106,6 +109,14 @@ function clicked(d) {
                 .attr("class", "municipality")
                 .attr("d", path)
                 .on("click", clicked);
+
+          g.selectAll("text")
+            .data(municipalities.features)
+            .enter().append("text")
+            .attr("transform", function(d) { return "translate(" + path.centroid(d) + ")"; })
+            .attr("dy", ".1em")
+            .attr("class","textMuni")
+            .text(function(d) { return d.properties.name; });
 
            g.append("path")
                 .datum(lakes)
@@ -139,6 +150,9 @@ function clicked(d) {
     cantonLevel = false;
     g.selectAll(".district").remove();
     g.selectAll(".municipality").remove();
+    g.selectAll(".textMuni").remove();
+
+    g.selectAll(".municipality").selectAll("text").remove();
     $('#personTable').html("<p id=\"ux_info\">Cliquez sur un canton pour afficher ses conseillers-ères.</p>");
   }
 

@@ -26,6 +26,19 @@
   stroke-width: 1;
 }
 
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1px;
+  text-anchor: middle;
+}
+
+.textCanton {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  text-anchor: middle;
+}
+
+
 .municipality-boundaries {
   fill: none;
 
