@@ -2,6 +2,11 @@
   fill :#f25;
 }
 
+.canton, .district {
+  fill: #e5e5e5;
+  stroke: #fff;
+  stroke-width:2px;
+}
 
 .canton-boundaries {
   fill: none;
@@ -41,7 +46,7 @@ h1 {
 }
 
 
-.lakes {
+.lake {
   fill: steelblue;
   fill-opacity: 1;
 }
@@ -50,13 +55,18 @@ h1 {
   fill: #222;
 }
 
-#municipalities .active {
+.municipality .active {
   fill: red;
 }
 
-#cantons .active {
+.canton .active {
   fill: orange;
 }
+
+.district .active {
+  fill: orange;
+}
+
 
 #cantons-borders {
   fill: none;
