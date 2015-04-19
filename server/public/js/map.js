@@ -94,17 +94,6 @@ function clicked(d) {
 
         });
 
-        $.ajax({
-            url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
-            type: 'GET',
-            crossDomain: true,
-            success: function(data) {
-                $('#personTable').html(data);
-            }
-        });
-
-
-
     } else if(centered.properties.type === "canton" && d.properties.type === "district") { // We are focusing a District
         console.log("Second time");
 
@@ -136,20 +125,30 @@ function clicked(d) {
 
 
         });
-    } else if(centered.properties.type === "district" && d.properties.type === "municipality") { // We are focusing a municipality
-        $.ajax({
-            url: 'http://ex0ns.me:3000/municipalities/' + d.properties.name + '/users',
-            type: 'GET',
-            crossDomain: true,
-            success: function(data) {
-                $('#personTable').html(data);
-            }
-        });
-
     }
 
     centered = d;
     cantonLevel = true;
+
+      if(centered.properties.type === "canton"){
+          $.ajax({
+              url: 'http://ex0ns.me:3000/cantons/' + centered.properties.name + '/users',
+              type: 'GET',
+              crossDomain: true,
+              success: function(data) {
+                  $('#personTable').html(data);
+              }
+          });
+      }else if(centered.properties.type === "municipality"){
+          $.ajax({
+              url: 'http://ex0ns.me:3000/municipalities/' + centered.properties.name + '/users',
+              type: 'GET',
+              crossDomain: true,
+              success: function(data) {
+                  $('#personTable').html(data);
+              }
+          });
+      }
 
   } else {
     x = width / 2;
