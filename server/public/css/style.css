@@ -38,6 +38,13 @@ text {
   text-anchor: middle;
 }
 
+.textMuni {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1px;
+  text-anchor: middle;
+}
+
+
 
 .municipality-boundaries {
   fill: none;
