@@ -2,17 +2,42 @@
   fill :#f25;
 }
 
-.canton, .district {
+.canton {
   fill: #e5e5e5;
   stroke: #fff;
-  stroke-width:2px;
+  stroke-width:1px;
 }
+
+.district {
+  fill: #e5e5e5;
+  stroke: #fff;
+  stroke-width:.6px;
+}
+.municipality {
+  fill: #e5e5e5;
+  stroke: #fff;
+  stroke-width:.2px;
+}
+
 
 .canton-boundaries {
   fill: none;
   stroke: #fff;
   stroke-width: 1;
 }
+
+text {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1px;
+  text-anchor: middle;
+}
+
+.textCanton {
+   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  text-anchor: middle;
+}
+
 
 .municipality-boundaries {
   fill: none;
@@ -59,7 +84,7 @@ h1 {
   fill: red;
 }
 
-.canton .active {
+.active {
   fill: orange;
 }
 
