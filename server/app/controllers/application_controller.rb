@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
       session.delete(:commenter_id)
       @current_commenter = nil
     end
+    return @current_commenter
   end
   helper_method :current_commenter
 

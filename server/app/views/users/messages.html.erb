@@ -11,8 +11,8 @@
     <p>Vous devez vous connecter pour pouvoir intéragir sur le site.</p>
 <% else %>
     <form>
-      <label>Question: </label><input type="text" name="titre">
-      <label>Description:</label><textarea name="description">Quelques précisions sur votre question</textarea>
+      <label>Question: </label><br><input type="text" placeholder="Posez votre question" style="width:100%;" name="titre">
+      <label>Description:</label><br><textarea style="width:100%;" name="description" placeholder="Quelques précisions sur votre question"></textarea>
       <input type="submit" value="Envoyer" />
     </form>
 <% end %>
