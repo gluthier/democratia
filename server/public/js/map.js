@@ -70,7 +70,6 @@ function clicked(d) {
     
 
     if (!centered) {
-        //d3.select(this).on("click", null);
         console.log("First time");
         d3.json("data/ch-districts-lakes.json", function (error, ch) {
             var districts = topojson.feature(ch, ch.objects.districts);
@@ -92,6 +91,16 @@ function clicked(d) {
                 .attr("d", path);
 
         });
+
+        $.ajax({
+            url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
+            type: 'GET',
+            crossDomain: true,
+            success: function(data) {
+                $('#personTable').html(data);
+            }
+        });
+
 
 
     } else if(centered.properties.type === "canton" && d.properties.type === "district") { // We are focusing a District
@@ -126,17 +135,16 @@ function clicked(d) {
 
         });
     } else if(centered.properties.type === "district" && d.properties.type === "municipality") { // We are focusing a municipality
-        console.log("test3");
-    }
+        $.ajax({
+            url: 'http://ex0ns.me:3000/municipalities/' + d.properties.name + '/users',
+            type: 'GET',
+            crossDomain: true,
+            success: function(data) {
+                $('#personTable').html(data);
+            }
+        });
 
-    $.ajax({
-      url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
-      type: 'GET',
-      crossDomain: true,
-      success: function(data) {
-          $('#personTable').html(data);
-      }
-    });
+    }
 
     centered = d;
     cantonLevel = true;
@@ -170,7 +178,7 @@ function clicked(d) {
 $('body').on('click','.ask',function(data){
     var id = $(data.target).attr('data-user-id');
     $.ajax({
-        url: 'http://localhost:3000/users/' + id,
+        url: 'http://ex0ns.me:3000/users/' + id,
         type: 'GET',
         crossDomain: true,
         success: function(data) {
