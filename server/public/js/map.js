@@ -14,8 +14,7 @@ var svg = d3.select("#map").append("svg")
 svg.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height)
-    .on("click", clicked);
+    .attr("height", height);
 
 var g = svg.append("g");
 
@@ -26,8 +25,8 @@ d3.json("data/ch-cantons-lakes.json", function(error, ch) {
     .data(topojson.feature(ch, ch.objects.cantons).features)
     .enter().append("path")
     .attr("d", path)
-    .attr("class","canton-click")
     .on("click", clicked);
+
 
 
   g.append("path")
@@ -46,7 +45,7 @@ d3.json("data/ch-cantons-lakes.json", function(error, ch) {
 
 function clicked(d) {
   var x, y, k;
-
+    console.log(d);
   if (d && centered !== d) {
     var centroid = path.centroid(d);
     x = centroid[0];
@@ -54,19 +53,23 @@ function clicked(d) {
     k = 4;
 
     if (!centered) { // We zoom on a canton
-        d3.json("data/ch-districts-lakes.json", function (error, ch) {
-            g.append("path")
-                .datum(topojson.mesh(ch, ch.objects.districts, function (a, b) {
-                    return a !== b;
-                }))
-                .attr("class", "municipality-boundaries")
-                .attr("id", "districts")
-                .attr("d", path)
-                .on("click", clicked);
+        console.log("Test1");
+        d3.select(this).on("click", null);
 
+        d3.json("data/ch-districts-lakes.json", function (error, ch) {
+            g.append("g")
+                .attr("id", "districts")
+                .selectAll("path")
+                .data(topojson.feature(ch, ch.objects.districts).features)
+                .enter().append("path")
+                .attr("d", path)
+                //.attr("class", "municipality-boundaries")
+                .on("click", clicked);
         });
 
+
     } else if(centered.properties.type === "canton" && d.properties.type === "district") { // We are focusing a District
+        console.log("test2");
         d3.json("data/" + centered.properties.abbr.toLowerCase() + "-municipalities-lakes.json", function (error, ch) {
             g.append("path")
                 .datum(topojson.mesh(ch, ch.objects.municipalities, function (a, b) {
@@ -74,12 +77,11 @@ function clicked(d) {
                 }))
                 .attr("class", "municipality-boundaries")
                 .attr("id", "districts")
-                .attr("d", path)
-                .on("click", clicked);
+                .attr("d", path);
 
         });
     } else if(centered.properties.type === "district" && d.properties.type === "municipality") { // We are focusing a municipality
-
+        console.log("test3");
     }
 
     $.ajax({
@@ -95,6 +97,7 @@ function clicked(d) {
     cantonLevel = true;
 
   } else {
+      console.log("Else");
     x = width / 2;
     y = height / 2;
     k = 1;

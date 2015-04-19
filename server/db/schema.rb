@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418182621) do
+ActiveRecord::Schema.define(version: 20150418234259) do
 
   create_table "cantons", force: :cascade do |t|
     t.string   "name"
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 20150418182621) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "json_id_canton"
+  end
+
+  create_table "commenters", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "districts", force: :cascade do |t|
