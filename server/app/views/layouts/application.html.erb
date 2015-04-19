@@ -32,5 +32,18 @@
 <script src="http://d3js.org/topojson.v1.min.js"></script>
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/map.js"></script>
-
-</html>
+<script>
+	$('body').on('submit', '#sendQuestionId', function(event){
+		event.preventDefault();
+		$.ajax({
+			url: 'http://ex0ns.me:3000/comments/create',
+			method: 'post',
+			data: $(this).serialize(),
+			crossDomain: true,
+			success: function(data){
+				$('#personTable').html(data);
+			}
+		});
+	});
+</script>
+</html>	
