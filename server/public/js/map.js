@@ -57,7 +57,7 @@ function clicked(d) {
     y = centroid[1];
 
     if (d.properties.type == "canton") {
-      k = 4;
+      k = 2;
     }
 
     if (d.properties.type == "municipality") {
@@ -84,7 +84,6 @@ function clicked(d) {
                 .on("click", clicked);
 
 
-            
 
             g.append("path")
                 .datum(lakes)
@@ -151,7 +150,6 @@ function clicked(d) {
     cantonLevel = true;
 
   } else {
-    console.log("ELSE");
     x = width / 2;
     y = height / 2;
     k = 1;
