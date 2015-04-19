@@ -69,20 +69,22 @@ function clicked(d) {
 
 
     } else if(centered.properties.type === "canton" && d.properties.type === "district") { // We are focusing a District
-        console.log("test2");
+        console.log("data/" + centered.properties.abbr.toLowerCase() + "-municipalities-lakes.json");
         d3.json("data/" + centered.properties.abbr.toLowerCase() + "-municipalities-lakes.json", function (error, ch) {
-            g.append("path")
-                .datum(topojson.mesh(ch, ch.objects.municipalities, function (a, b) {
-                    return a !== b;
-                }))
+            g.append("g")
+                .attr("id", centered.properties.name + "-municipalities")
+                .selectAll("path")
+                .data(topojson.feature(ch, ch.objects.municipalities).features)
+                .enter().append("path")
                 .attr("class", "municipality-boundaries")
                 .attr("id", "districts")
-                .attr("d", path);
+                .attr("d", path)
+                .on("click", clicked);
 
         });
-    } else if(centered.properties.type === "district" && d.properties.type === "municipality") { // We are focusing a municipality
+    } /*else if(centered.properties.type === "district" && d.properties.type === "municipality") { // We are focusing a municipality
         console.log("test3");
-    }
+    }*/
 
     $.ajax({
       url: 'http://ex0ns.me:3000/cantons/' + d.properties.name + '/users',
