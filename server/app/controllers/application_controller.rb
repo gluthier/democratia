@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
       @current_commenter ||= Commenter.find(session[:commenter_id]) if session[:commenter_id]
     rescue
       session.delete(:commenter_id)
+      @current_commenter = nil
     end
   end
   helper_method :current_commenter
