@@ -58,13 +58,10 @@ function clicked(d) {
     if (d.properties.type == "district") {
       k = 6;
     }
-
-
-
     
 
     if (!centered) {
-        d3.select(this).on("click", null);
+        //d3.select(this).on("click", null);
         console.log("First time");
         d3.json("data/ch-districts-lakes.json", function (error, ch) {
             var districts = topojson.feature(ch, ch.objects.districts);

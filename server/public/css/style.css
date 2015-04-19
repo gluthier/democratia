@@ -5,18 +5,18 @@
 .canton {
   fill: #e5e5e5;
   stroke: #fff;
-  stroke-width:2px;
+  stroke-width:1px;
 }
 
 .district {
   fill: #e5e5e5;
   stroke: #fff;
-  stroke-width:1px;
+  stroke-width:.6px;
 }
 .municipality {
   fill: #e5e5e5;
   stroke: #fff;
-  stroke-width:.5px;
+  stroke-width:.2px;
 }
 
 
