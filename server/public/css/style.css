@@ -12,11 +12,13 @@
   fill: #e5e5e5;
   stroke: #fff;
   stroke-width:.6px;
+  opacity: 0.6;
 }
 .municipality {
   fill: #e5e5e5;
   stroke: #fff;
   stroke-width:.2px;
+  opacity: 0.6;
 }
 
 
@@ -92,11 +94,11 @@ h1 {
 }
 
 .active {
-  fill: orange;
+  fill: #d82b25;
 }
 
 .district .active {
-  fill: orange;
+  fill: #d82b25;
 }
 
 
