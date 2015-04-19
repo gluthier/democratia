@@ -9,9 +9,9 @@
     <title>Democratia</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="server/public/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="server/public/css/style.css" />
 </head>
 
 
@@ -60,6 +60,20 @@ window.fbAsyncInit = function() {
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="http://d3js.org/topojson.v1.min.js"></script>
-<script src="js/jquery-2.1.3.min.js"></script>
+<script src="server/public/js/jquery-2.1.3.min.js"></script>
 <!-- File containing the d3 js code to animate the map-->
-<script src="js/map.js"></script>
+<script src="server/public/js/map.js"></script>
+
+<script language="javascript" type="text/javascript">
+    function loadComments(id) {
+        $.ajax({
+          url: 'http://localhost:3000/comments/' + id,
+          type: 'GET',
+          crossDomain: true,
+          success: function(data) {
+              $('#personTable').html(data);
+            console.log(data);
+          }
+        });
+    }
+</script>

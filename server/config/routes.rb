@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/districts/:name/users' => 'districts#users_in_district'
   get '/municipalities/:name/users' => 'municipalities#users_in_municipality'
 
+  get '/comments/:user_id' => 'comments#comments_for_user'
+
   get '/party/:name/users' => 'political_parties#political_party_users'
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

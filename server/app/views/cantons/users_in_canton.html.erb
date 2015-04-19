@@ -22,7 +22,7 @@
                 <td><%=user.political_party.name %></td>
                 <td><a href="<%=user.website %>" target="_blank">Biographie</a></td>
                 <td><a href="mailto:<%=user.email %>"><%=user.email %></a></td>
-                <td><a href="#" data-user-id="<%= user.id %>" class="ask">Poser une question</a></td>
+                <td><a href="#" data-user-id="<%= user.id %>" class="ask" onclick="loadComments(<%= user.id %>)">Poser une question</a></td>
               </tr>
           <% end %>
           </tbody>
@@ -50,7 +50,7 @@
                 <td><%=user.political_party.name %></td>
                 <td><a href="<%=user.website %>" target="_blank">Biographie</a></td>
                 <td><a href="mailto:<%=user.email %>"><%=user.email %></a></td>
-                <td><a href="#" data-user-id="<%= user.id %>" class="ask">Poser une question</a></td>
+                <td><a href="#" data-user-id="<%= user.id %>" class="ask" onclick="loadComments(<%= user.id %>)">Poser une question</a></td>
               </tr>
           <% end %>
           </tbody>
