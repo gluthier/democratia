@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Democratia</title>
+    <title>Democratia</title>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
 
-  <%= csrf_meta_tags %>
+    <%= csrf_meta_tags %>
 </head>
 <body>
+    <div id="commenter-widget">
+        <% if current_commenter %>
+        Welcome <strong><%= current_commenter.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <% end %>
+    </div>
 
     <%= yield %>
 
@@ -26,5 +34,3 @@
 <script src="js/map.js"></script>
 
 </html>
-
-
