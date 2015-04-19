@@ -12,13 +12,13 @@
   fill: #e5e5e5;
   stroke: #fff;
   stroke-width:.6px;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 .municipality {
   fill: #e5e5e5;
   stroke: #fff;
   stroke-width:.2px;
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 
@@ -94,11 +94,11 @@ h1 {
 }
 
 .active {
-  fill: #d82b25;
+  fill: #ff2e26;
 }
 
 .district .active {
-  fill: #d82b25;
+  fill: #ff2e26;
 }
 
 
@@ -113,4 +113,23 @@ h1 {
 
 #ux_info {
     text-align: center;
+}
+
+.comment_box {
+  margin-bottom: 10px;
+  border-top: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  background: linear-gradient(to right, rgba(70, 130, 180, 0.3), rgba(0, 0, 0, 0));
+  width: 90%;
+  height: 100px;
+}
+
+.comment div{
+  display: inline-block;
+}
+
+.button_box {
+  height: 100px;
+  width: 5%;
 }

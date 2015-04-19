@@ -1,21 +1,36 @@
-<% if @comments.empty? %>
-    <p>Cette personne n'a recu aucune question, soyez le premier à la contacter!</p>
-<% else %>
-    <% @comments.each do |comment| %>
-        <a href="#" class="upvote" data-comment-id="<%= comment.id %>">Up</a>
-        <a href="#" class="downvote" data-comment-id="<%= comment.id %>">Down</a><br />
-        Question: <%= comment.title %><br />
-	Description: <%= comment.content %><br />
-    <% end %>
-<% end %>
-
 <% if current_commenter.nil? %>
     <p>Vous devez vous connecter pour pouvoir intéragir sur le site.</p>
 <% else %>
+    <h3>Posez une question</h3>
     <form method="post" id="sendQuestionId">
       <label>Question: </label><br><input type="text" placeholder="Posez votre question" style="width:100%;" name="titre">
       <label>Description:</label><br><textarea style="width:100%;" name="description" placeholder="Quelques précisions sur votre question"></textarea>
       <input type="hidden" name="user_id" value="<%= @user.id %>" />
-      <input type="submit" value="Envoyer"/>
+
+      <a id="sbtQuestion" class="btn btn-success" href="#">
+        Envoyer <i class="fa fa-envelope-o fa-1x"></i> </a>
     </form>
 <% end %>
+
+<% if @comments.empty? %>
+    <p>Cette personne n'a recu aucune question, soyez le premier à la contacter!</p>
+<% else %>
+    <h3>Commentaires</h3>
+    <% @comments.each do |comment| %>
+        <div class="comment">
+            <div class="button_box">
+                <p style="font-size: 14px"><%= comment.get_upvotes.size - comment.get_downvotes.size %></p>
+              <% if !current_commenter.nil? %>
+
+                  <button type="button" class="btn btn-xs btn-success upvote" data-comment-id="<%= comment.id %>"><i class="fa fa-arrow-up"></i></button>
+                  <button type="button" class="btn btn-xs btn-danger downvote" data-comment-id="<%= comment.id %>"><i class="fa fa-arrow-down"></i></button>
+              <% end %>
+            </div>
+            <div class="comment_box">
+                <span style="font-size: 14pt"><b><%= comment.title %></b></span><br />
+                <span style="font-size: 14pt">Description:<br /> <%= comment.content %></span><br />
+            </div>
+        </div>
+    <% end %>
+<% end %>
+
