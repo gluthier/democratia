@@ -8,4 +8,8 @@ class CommentsController < ApplicationController
         end
         render 'users/messages', layout: false
     end
+
+    def create
+
+    end
 end
