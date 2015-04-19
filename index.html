@@ -76,4 +76,19 @@ window.fbAsyncInit = function() {
           }
         });
     }
+
+    $('body').on('submit', 'sendQuestionId', function sendComment(e) {
+        e.preventDefault();
+        console.log("yo");
+        $.ajax({
+          url: 'http://localhost:3000/cantons/' + d.properties.name + '/users',
+          type: 'POST',
+          data: $(this).serialize(),
+          crossDomain: true,
+          success: function(data) {
+              $('#personTable').html(data);
+            console.log(data);
+          }
+        });
+    });
 </script>

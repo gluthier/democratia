@@ -11,9 +11,9 @@
 <% if current_commenter.nil? %>
     <p>Vous devez vous connecter pour pouvoir intéragir sur le site.</p>
 <% else %>
-    <form>
+    <form id="sendQuestionId">
       <label>Question: </label><br><input type="text" placeholder="Posez votre question" style="width:100%;" name="titre">
       <label>Description:</label><br><textarea style="width:100%;" name="description" placeholder="Quelques précisions sur votre question"></textarea>
-      <input type="submit" value="Envoyer" />
+      <input type="submit" value="Envoyer"/>
     </form>
 <% end %>
