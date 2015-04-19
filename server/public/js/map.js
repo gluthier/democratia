@@ -15,6 +15,7 @@ svg.append("rect")
     .attr("class", "background")
     .attr("width", width)
     .attr("height", height);
+    
 
 var g = svg.append("g");
 
@@ -82,6 +83,7 @@ function clicked(d) {
                 .attr("class", "district")
                 .attr("d", path)
                 .on("click", clicked);
+
 
 
 
