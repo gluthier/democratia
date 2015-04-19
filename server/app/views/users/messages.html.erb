@@ -8,7 +8,7 @@
     <% end %>
 <% end %>
 
-<% if current_commenter %>
+<% if current_commenter.nil? %>
     <p>Vous devez vous connecter pour pouvoir intéragir sur le site.</p>
 <% else %>
     <form>
