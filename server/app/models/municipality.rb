@@ -1,5 +1,5 @@
 class Municipality < ActiveRecord::Base
 
-  belongs_to :district
+  belongs_to :canton
 
 end

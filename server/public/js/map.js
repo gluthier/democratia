@@ -120,3 +120,8 @@ function clicked(d) {
       .style("stroke-width", 1.5 / k + "px");
 
 }
+
+$('body').on('click','.ask',function(data){
+    console.log('test some special magick');
+    console.log(data);
+});

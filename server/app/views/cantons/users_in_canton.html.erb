@@ -1,28 +1,60 @@
-<% if @users.empty? %>
+<% if @all_canton.empty? %>
     <p id="ux_info">Il n'y a pas de conseillers-ères dans la base de données.</p>
 <% else %>
-    <table id ="cantonInfos" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Conseiller-ère</th>
-                <th>Parti politique</th>
-                <th>En savoir plus</th>
-                <th>Email</th>
-                <th>Poser une question</th>
-            </tr>
-        </thead>
-        <tbody>
-
-            <% @users.each do |user| %>
-            <tr>
+    <h3>Canton</h3>
+    <% if @canton_council.empty? %>
+        <p id="ux_info">Il n'y a pas de conseillers-ères cantonale pour ce canton dans la base de données.</p>
+    <% else %>
+        <table id ="cantonInfos" class="table table-striped">
+          <thead>
+          <tr>
+            <th>Conseiller-ère</th>
+            <th>Parti politique</th>
+            <th>En savoir plus</th>
+            <th>Email</th>
+            <th>Poser une question</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @canton_council.each do |user| %>
+              <tr>
                 <td><%=user.firstname %> <%=user.lastname %></td>
                 <td><%=user.political_party.name %></td>
                 <td><a href="<%=user.website %>" target="_blank">Biographie</a></td>
                 <td><a href="mailto:<%=user.email %>"><%=user.email %></a></td>
                 <td><a href="#">Poser une question</a></td>
-            </tr>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% end %>
 
-            <% end %>
-        </tbody>
-    </table>
+    <h3>Municipalitées</h3>
+    <% if @municipalities.empty? %>
+        <p id="ux_info">Il n'y a pas de conseillers-ères dans la base de données.</p>
+    <% else %>
+        <table id ="cantonInfos-sub" class="table table-striped">
+          <thead>
+          <tr>
+            <th>Conseiller-ère</th>
+            <th>Parti politique</th>
+            <th>En savoir plus</th>
+            <th>Email</th>
+            <th>Poser une question</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @municipalities.each do |user| %>
+              <tr>
+                <td><%=user.firstname %> <%=user.lastname %></td>
+                <td><%=user.political_party.name %></td>
+                <td><a href="<%=user.website %>" target="_blank">Biographie</a></td>
+                <td><a href="mailto:<%=user.email %>"><%=user.email %></a></td>
+                <td><a href="#" data-user-id="<%= user.id %>" class="ask">Poser une question</a></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+    <% end %>
+
 <% end %>

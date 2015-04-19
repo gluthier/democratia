@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150419030405) do
+ActiveRecord::Schema.define(version: 20150419034327) do
 
   create_table "cantons", force: :cascade do |t|
     t.string   "name"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150419030405) do
     t.datetime "updated_at",         null: false
     t.integer  "canton_id"
     t.integer  "district_id"
-    t.integer  "commune_id"
+    t.integer  "municipality_id"
     t.string   "website"
   end
 
