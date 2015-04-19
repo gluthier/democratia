@@ -3,14 +3,11 @@ class Commenter < ActiveRecord::Base
     has_many :comments
 
     def self.from_omniauth(auth)
-        where(auth.slice(:provider,
-        :uid)).first_or_initialize.tap do |commenter|
-            commenter.provider = auth.provider
-            commenter.uid = auth.uid
-            commenter.name = auth.info.name
-            commenter.oauth_token = auth.credentials.token
-            commenter.oauth_expires_at = Time.at(auth.credentials.expires_at)
-            commenter.save!
+        where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+            user.provider = auth.provider
+            user.uid      = auth.uid
+            user.name     = auth.info.name
+            user.save
         end
     end
 end
