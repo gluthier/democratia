@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
     def create
-        commenter = Commenter.from_ominauth(env["omniauth.auth"])
+        commenter = Commenter.from_omniauth(env['omniauth.auth'])
         session[:commenter_id] = commenter.id
         redirect_to root_url
     end
