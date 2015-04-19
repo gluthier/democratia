@@ -7,7 +7,7 @@
         <%= comment.title %><%= comment.content %>
     <% end %>
 <% end %>
-<% if @current_commenter.nil? %>
+<% if current_commenter %>
     <p>Vous devez vous connecter pour pouvoir intéragir sur le site.</p>
 <% else %>
     <form>

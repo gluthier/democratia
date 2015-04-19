@@ -18,9 +18,9 @@
     <div id="commenter-widget">
         <% if current_commenter %>
         Welcome <strong><%= current_commenter.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <%= link_to 'Sign out', signout_path, id: 'sign_out' %>
         <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+        <%= link_to 'Sign in with Facebook', '/auth/facebook', id: 'sign_in' %>
         <% end %>
     </div>
 
