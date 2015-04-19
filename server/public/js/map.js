@@ -178,7 +178,7 @@ function clicked(d) {
 $('body').on('click','.ask',function(data){
     var id = $(data.target).attr('data-user-id');
     $.ajax({
-        url: 'http://localhost:3000/users/' + id,
+        url: 'http://ex0ns.me:3000/users/' + id,
         type: 'GET',
         crossDomain: true,
         success: function(data) {
